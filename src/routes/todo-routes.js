@@ -1,29 +1,10 @@
-const toDoView = require('../views/template_todo_app');
-
-const tarefas = [{
-        "title": "Higienização",
-        "description": "Tomar banho e escovar os dentes" 
-    },
-    {
-        "title": "Estudos",
-        "description": "Estudar Node.js"
-    },
-    {
-        "name": "Fabio",
-        "title": "Trabalho",
-        "description": "Daily meet com a equipe"
-    }]
+const TarefasController = require('../controllers/TarefasController');
 
 module.exports = (app)=>{
-    app.get('/', (req, res)=>{
-        res.send(toDoView(tarefas))
-    })
+    var bodyParser = require('body-parser');
+    var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-    /* app.get('/:busca', (req, res)=>{
-        tarefas.forEach(element => {
-            if(req.params.busca == element.name){
-                res.send(toDoView(element))
-            }
-        });       
-    }) */
-}
+    app.get('/', TarefasController.homeTarefas())
+    
+    app.post('/', urlencodedParser, TarefasController.insereTarefas())
+};
