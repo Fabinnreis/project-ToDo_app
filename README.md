@@ -17,16 +17,16 @@
 
 ## Arquivos
 
-**app/controllers/TarefasController.js** → classe controladora das tarefas da aplicação
-**app/models/Task.js** → classe de modelo das tarefas da aplicação
-**app/publico/js/requisicaoApi.js** → classe de configuração da restful api
-**app/routes/todo-routes.js** → scripts de configuração das rotas da aplicação
-**app/views/insertCard.js** → scripts de configuração e apresentação dos cards de tarefas
-**app/views/modal_tarefas** →  scripts de configuração e apresentação do modal de edição de tarefas
-**app/views/template_todo_app** →  scripts de configuração e apresentação da página inicial
-**app/servidor.js** →  scripts de configuração e do servidor node.js
+- **app/controllers/TarefasController.js** → classe controladora das tarefas da aplicação
+- **app/models/Task.js** → classe de modelo das tarefas da aplicação
+- **app/publico/js/requisicaoApi.js** → classe de configuração da restful api
+- **app/routes/todo-routes.js** → scripts de configuração das rotas da aplicação
+- **app/views/insertCard.js** → scripts de configuração e apresentação dos cards de tarefas
+- **app/views/modal_tarefas** →  scripts de configuração e apresentação do modal de edição de tarefas
+- **app/views/template_todo_app** →  scripts de configuração e apresentação da página inicial
+- **app/servidor.js** →  scripts de configuração e do servidor node.js
 
-**config/custom/custom-express.js** →  scripts de configuração personalizada do pacote express
-**config/DAO/TarefasDAO.js** → classe responsável pelas operações no banco de dados
-**config/database/customDatabase.js** → classe responsável pela configuração do banco de dados
-**config/database/toDoDb.db** → arquivo de banco de dados utilizado ma aplicação
+- **config/custom/custom-express.js** →  scripts de configuração personalizada do pacote express
+- **config/DAO/TarefasDAO.js** → classe responsável pelas operações no banco de dados
+- **config/database/customDatabase.js** → classe responsável pela configuração do banco de dados
+- **config/database/toDoDb.db** → arquivo de banco de dados utilizado ma aplicação
