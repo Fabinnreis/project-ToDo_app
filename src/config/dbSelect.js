@@ -13,7 +13,7 @@ module.exports = (retorno)=>{
     });
   });
 
-  console.log(retorno)
+  //console.log(retorno)
 
     
 

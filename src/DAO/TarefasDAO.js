@@ -1,17 +1,59 @@
 class TarefasDAO {
     constructor(db){
         this._db = db;
+        this._busca = "SELECT * FROM 'TASKS'";
+        this._insercao = "INSERT INTO TASKS(TITLE,DESCRIPTION) VALUES (?, ?)";
+        this._delecao = "DELETE FROM TASKS WHERE ID_TAREFAS=?";
+        this._atualizacao = "UPDATE TASKS SET TITLE=?, DESCRIPTION=? WHERE ID_TAREFAS=?";
     }
 
-    lista(callback){
-        this._db.all("SELECT * FROM 'TASKS'", (err, rows) => 
-            callback(err, rows))
+    lista(){
+        return new Promise((resolve, reject)=>{
+            this._db.all(this._busca, (err, rows) =>{
+                if(err){
+                    reject(`Erro na requisição: ${err}`)
+                } else{
+                    resolve(JSON.stringify({'results': rows}))
+                }
+            })
+        })
     }
-    insere(req, callback){
-        this._db.run("INSERT INTO TASKS(TITLE,DESCRIPTION) VALUES (?, ?)", [req.body.form_title, req.body.form_description]);
-        this._db.all("SELECT * FROM 'TASKS'", (err, rows)=>
-            callback(err, rows))
+    insere(req){
+        return new Promise((resolve, reject)=>{
+            this._db.run(this._insercao, [req.body.titulo, req.body.descricao], (err)=>{
+                if(err){
+                    reject(`Erro ao inserir:${err}`)
+                } else {
+                    resolve('Inserido com sucesso!')
+                }
+            })
+        })
     }
 
-}
+    deleta(req){
+        return new Promise((resolve, reject)=>{
+            this._db.run(this._delecao, [req.body.id], (err)=>{
+                if (err){
+                    reject(`Erro ao deletar: ${err}`)
+                } else {
+                    resolve('Deletado com sucesso!')
+                }
+            })
+        })
+    }
+
+    atualiza(req){
+        return new Promise((resolve, reject)=>{
+            this._db.run(this._atualizacao, [req.body.titulo, req.body.descricao, req.body.id], (err)=>{
+                if (err){
+                    reject(`Erro ao atualizar: ${err}`)
+                } else {
+                    resolve('Atualizado com sucesso!')
+                }
+            })
+        })
+    }
+
+} //fechamento da classe
+
 module.exports = TarefasDAO;
