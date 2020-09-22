@@ -1,12 +1,11 @@
 const insertCard = (id_tarefas, title, description)=>{
       return `
 <div class="card m-4" style="width: 18rem;">
-    <div class="card-body">
-        
+    <div class="card-body" data-id-tarefa="${id_tarefas}">
         <h5 class="card-title">${title}</h5>
         <p class="card-text">${description}</p>
         <button data-toggle="modal" data-target="#modal${id_tarefas}" type="button" class="btn btn-primary">Editar</button>
-        <button onclick="RequisicaoApi.deletaCard({id:${id_tarefas}})" type="button" class="btn btn-primary">Remover</button>
+        <button onclick="RequisicaoApi.deletaCard(event)" type="button" class="btn btn-primary">Remover</button>
     </div>
     </div>
     

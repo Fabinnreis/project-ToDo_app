@@ -3,7 +3,8 @@ class RequisicaoApi{
         throw 'Não precisa de instancia'
     }
 
-    static adicionaTarefa(id_form){
+    static adicionaTarefa(id_form, event){
+        event.preventDefault();
         const myHeaders = new Headers({'Content-type': 'application/json'});
         const _form = document.getElementById(id_form);
         
@@ -24,25 +25,28 @@ class RequisicaoApi{
         }
         
         fetch('http://127.0.0.1:3000/adiciona', estruturaReq(valores))
+        .then(window.location.href = "/")
         .catch(err=>err)
 
-        window.location.href = "/"
+        
     }
 
-    static deletaCard(id_tarefa){
-        const myHeaders = new Headers({'Content-type': 'application/json'});    
+    static deletaCard(event){
+        const myHeaders = new Headers({'Content-type': 'application/json'});
+        const id_tarefa = event.target.parentNode.dataset.idTarefa;
+        const card = event.target.parentNode.parentNode;
         const estruturaReq = (req)=>{
             return { method: 'DELETE',
             headers: myHeaders,
             mode: 'cors',
             cache: 'default',
-            body: JSON.stringify(req) }
+            body: JSON.stringify({id: req}) }
         }
 
         fetch('http://127.0.0.1:3000/remove', estruturaReq(id_tarefa))
+        .then(card.remove())
         .catch(err=>err)
 
-        window.location.href = "/";
     }
 
     static atualizaTarefa(id_form, id_tarefa){
@@ -70,10 +74,9 @@ class RequisicaoApi{
         }
         
         fetch('http://127.0.0.1:3000/atualiza', estruturaReq(valores))
-        /* .then(response=>response)
-        .then(data=>console.log(data)) */
+        .then(window.location.href = "/")
         .catch(err=>err)
 
-        window.location.href = "/"
+        
     }
 }
