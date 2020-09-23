@@ -1,4 +1,5 @@
 const toDoView = require('../views/template_todo_app');
+const insertCard = require('../views/insertCard');
 const db = require('../../config/database/customDatabase');
 const TarefasDAO = require('../../config/DAO/TarefasDAO');
 const { urlencoded } = require('body-parser');
@@ -29,7 +30,7 @@ class TarefasController{
           tarefasDAO.insere(req)
             .then(response => {
               console.log(response)
-              resp.redirect('/');
+              resp.redirect('/')
               
             })
             .catch(err => {

@@ -19,7 +19,9 @@ const insertCard = (id_tarefas, title, description)=>{
         </button>
       </div>
       <div class="modal-body">
-        <form action="/atualiza" method="post" id="form_edit${id_tarefas}" class="flex-fill">
+        <form action="/atualiza" method="post" id="form_edit" class="flex-fill">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="form_edit_id" value="${id_tarefas}">
         <div class="form-group">
             <label for="tituloTarefa"><b>Título:</b></label>
             <input type="text" name="form_edit_title"  class="form-control" id="tituloTarefa" value="${title}">
@@ -28,13 +30,12 @@ const insertCard = (id_tarefas, title, description)=>{
             <label for="descricaoTarefa"><b>Descrição:</b></label>
             <textarea name="form_edit_description" class="form-control" id="descricaoTarefa" rows="3">${description}</textarea>
         </div>
-        <input type="hidden" name="id_edit_tarefas" value="${id_tarefas}">
-        </form>
       </div>
       <div class="modal-footer">
-        <button onclick="RequisicaoApi.atualizaTarefa('form_edit${id_tarefas}', ${id_tarefas})" type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>`
@@ -42,6 +43,3 @@ const insertCard = (id_tarefas, title, description)=>{
     };
 
 module.exports = insertCard;
-
-
-//(function(){alert('aaaaaaaaa')})()

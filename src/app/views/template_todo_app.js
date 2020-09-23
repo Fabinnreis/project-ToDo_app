@@ -26,7 +26,7 @@ function toDoView(tarefas){
         </nav>
         <div class="d-flex justify-content-center">
             <div class="w-50 p-4 border rounded shadow-sm"> 
-                <form action="/" method="post"id="form_id" class="flex-fill">
+                <form action="/adiciona" method="post" id="form_id" class="flex-fill">
                     <div class="form-group">
                         <label for="tituloTarefa"><b>Título:</b></label>
                         <input type="text" name="form_title" class="form-control" id="tituloTarefa" placeholder="Título da tarefa">
@@ -35,12 +35,12 @@ function toDoView(tarefas){
                         <label for="descricaoTarefa"><b>Descrição:</b></label>
                         <textarea name="form_description" class="form-control" id="descricaoTarefa" rows="3" placeholder="Insira a descrição da tarefa"></textarea>
                     </div>
+                <button type="submit" class="btn btn-primary">Adicionar Tarefa</button>
                 </form>
-                <button onclick="RequisicaoApi.adicionaTarefa('form_id', event)" type="button" class="btn btn-primary">Adicionar Tarefa</button>
             </div>
         </div>
         <div id="todoCard">
-            <div class="d-flex justify-content-center flex-wrap">
+            <div id="card" class="d-flex justify-content-center flex-wrap">
                 ${cardTarefas}
             </div>
         </div>

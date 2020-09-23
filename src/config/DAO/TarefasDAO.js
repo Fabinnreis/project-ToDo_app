@@ -20,7 +20,7 @@ class TarefasDAO {
     }
     insere(req){
         return new Promise((resolve, reject)=>{
-            this._db.run(this._insercao, [req.body.titulo, req.body.descricao], (err)=>{
+            this._db.run(this._insercao, [req.body.form_title, req.body.form_description], (err)=>{
                 if(err){
                     reject(`Erro ao inserir:${err}`)
                 } else {
@@ -43,8 +43,9 @@ class TarefasDAO {
     }
 
     atualiza(req){
+
         return new Promise((resolve, reject)=>{
-            this._db.run(this._atualizacao, [req.body.titulo, req.body.descricao, req.body.id], (err)=>{
+            this._db.run(this._atualizacao, [req.body.form_edit_title, req.body.form_edit_description, req.body.form_edit_id], (err)=>{
                 if (err){
                     reject(`Erro ao atualizar: ${err}`)
                 } else {
